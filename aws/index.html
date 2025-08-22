@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AWS & DevOps — Modern Landing Page</title>
+  <meta name="description" content="Attractive single‑page landing site showcasing AWS & DevOps services." />
+  <style>
+    :root{
+      --bg:#0b1220;/* deep navy */
+      --bg2:#0f172a;/* slate */
+      --text:#e6eefc;
+      --muted:#a8b3cf;
+      --brand:#ff9900; /* AWS orange */
+      --accent:#22d3ee; /* cyan */
+      --card:rgba(255,255,255,.06);
+      --stroke:rgba(255,255,255,.12);
+      --glow:0 10px 40px rgba(34,211,238,.25);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 80% -20%, rgba(255,153,0,.18), transparent 60%),
+                  radial-gradient(900px 500px at -10% 30%, rgba(34,211,238,.18), transparent 60%),
+                  linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrapper{max-width:1120px;margin:0 auto;padding:28px}
+
+    /* Top Nav */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,rgba(255,153,0,.15),rgba(255,255,255,.06));border:1px solid var(--stroke);box-shadow:var(--glow)}
+    .brand h1{font-size:18px;margin:0;font-weight:700;letter-spacing:.3px}
+    .nav a.btn{padding:10px 16px;border:1px solid var(--stroke);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));backdrop-filter: blur(6px);transition:.2s}
+    .nav a.btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.3)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center;padding:42px 0 24px}
+    .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);letter-spacing:.4px;text-transform:uppercase;border:1px solid var(--stroke);padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05)}
+    .hero h2{font-size:44px;line-height:1.1;margin:14px 0}
+    .hero p{font-size:16px;color:var(--muted);margin:0 0 24px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .cta .primary{background:linear-gradient(135deg,var(--brand),#ffb84d);color:#1b1303;border:none;padding:12px 18px;border-radius:999px;font-weight:700}
+    .cta .ghost{border:1px solid var(--stroke);padding:12px 18px;border-radius:999px;background:rgba(255,255,255,.04)}
+    .art{position:relative;min-height:280px;border-radius:var(--radius);border:1px solid var(--stroke);background:radial-gradient(300px 160px at 70% 20%, rgba(255,153,0,.25), transparent 60%), radial-gradient(260px 200px at 20% 90%, rgba(34,211,238,.25), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));box-shadow:var(--glow);overflow:hidden}
+    .grid{position:absolute;inset:0;background-image:linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px);background-size:40px 40px;mask-image: radial-gradient(80% 80% at 50% 50%, black, transparent)}
+
+    /* Feature Cards */
+    .section{padding:36px 0}
+    .section h3{margin:0 0 16px;font-size:24px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{border:1px solid var(--stroke);border-radius:var(--radius);background:var(--card);backdrop-filter: blur(8px);padding:18px;transition:.25s}
+    .card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.28)}
+    .card h4{margin:8px 0 6px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Badges row */
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .badge{font-size:12px;color:#0b1220;background:linear-gradient(135deg, #22d3ee, #7dd3fc);border:none;border-radius:999px;padding:6px 10px;font-weight:700}
+
+    /* Timeline */
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
+    .step{border:1px dashed var(--stroke);border-radius:16px;padding:14px}
+    .step .n{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:rgba(255,153,0,.25);border:1px solid var(--stroke);font-weight:700;margin-bottom:8px}
+    .step p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Footer */
+    footer{margin:36px 0 10px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .timeline{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .cards{grid-template-columns:1fr}
+      .timeline{grid-template-columns:1fr}
+      .hero h2{font-size:34px}
+    }
+
+    /* Simple float animation */
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    .float{animation:floaty 6s ease-in-out infinite}
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- Minimal AWS box glyph -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="6" width="18" height="12" rx="3" stroke="currentColor" opacity=".9"/>
+            <path d="M6 9h12M6 12h12M6 15h8" stroke="currentColor" opacity=".6"/>
+          </svg>
+        </div>
+        <h1>AWS & DevOps</h1>
+      </div>
+      <div class="actions">
+        <a href="#contact" class="btn">Contact</a>
+        <a href="#demo" class="btn">Live Demo</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <span class="kicker">Cloud‑native delivery • Secure • Reliable</span>
+        <h2>Build, ship, and scale on <span style="color:var(--brand)">AWS</span> with battle‑tested <span style="color:var(--accent)">DevOps</span>.</h2>
+        <p>From infrastructure as code to CI/CD and observability, this starter page showcases a clean, modern layout you can drop into any AWS project.</p>
+        <div class="cta">
+          <a href="#services" class="primary">Explore Services</a>
+          <a href="#stack" class="ghost">View Tech Stack</a>
+        </div>
+      </div>
+      <div class="art float" aria-hidden="true">
+        <div class="grid"></div>
+        <!-- DevOps infinity + cloud glyphs -->
+        <svg viewBox="0 0 520 240" style="position:absolute;inset:0;margin:auto;filter:drop-shadow(0 10px 30px rgba(34,211,238,.35));">
+          <!-- Infinity -->
+          <path d="M60 120c40-80 140-80 180 0s140 80 180 0" stroke="#22d3ee" stroke-width="14" fill="none" stroke-linecap="round"/>
+          <path d="M60 120c40 80 140 80 180 0s140-80 180 0" stroke="#ffb84d" stroke-width="14" fill="none" stroke-linecap="round"/>
+          <!-- Cloud cubes -->
+          <rect x="410" y="40" width="60" height="60" rx="10" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.25)"/>
+          <rect x="450" y="80" width="40" height="40" rx="8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.25)"/>
+          <rect x="395" y="95" width="34" height="34" rx="8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.25)"/>
+        </svg>
+      </div>
+    </header>
+
+    <section id="services" class="section">
+      <h3>What we do</h3>
+      <div class="cards">
+        <article class="card">
+          <div class="badges"><span class="badge">IaC</span><span class="badge">Terraform</span></div>
+          <h4>Infrastructure as Code</h4>
+          <p>Provision AWS with repeatable blueprints: VPC, ALB, ECS/EKS, RDS — versioned and peer‑reviewed.</p>
+        </article>
+        <article class="card">
+          <div class="badges"><span class="badge">CI/CD</span><span class="badge">Pipelines</span></div>
+          <h4>Continuous Delivery</h4>
+          <p>Automate build, test, and deploy with CodePipeline, GitHub Actions, or GitLab CI for zero‑downtime rollouts.</p>
+        </article>
+        <article class="card">
+          <div class="badges"><span class="badge">SRE</span><span class="badge">Observability</span></div>
+          <h4>Reliability & Observability</h4>
+          <p>Metrics, logs, traces with CloudWatch, OpenTelemetry, and alerting that actually signals, not spams.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="stack" class="section">
+      <h3>Tech stack highlights</h3>
+      <div class="cards">
+        <article class="card">
+          <h4>Compute</h4>
+          <p>ECS Fargate • EKS • Lambda • EC2 Auto Scaling.</p>
+        </article>
+        <article class="card">
+          <h4>Networking</h4>
+          <p>VPC • ALB/NLB • API Gateway • Route 53 • CloudFront.</p>
+        </article>
+        <article class="card">
+          <h4>Data</h4>
+          <p>DynamoDB • RDS • ElastiCache • S3 • OpenSearch.</p>
+        </article>
+        <article class="card">
+          <h4>Security</h4>
+          <p>IAM least‑privilege • KMS • WAF • Secrets Manager • SSO.</p>
+        </article>
+        <article class="card">
+          <h4>CI/CD</h4>
+          <p>CodePipeline • CodeBuild • GitHub Actions • ArgoCD.</p>
+        </article>
+        <article class="card">
+          <h4>Observability</h4>
+          <p>CloudWatch • Prometheus • Grafana • X‑Ray • PagerDuty.</p>
+        </article>
+      </div>
+
+      <div class="timeline">
+        <div class="step"><div class="n">1</div><strong>Plan</strong><p>Assess workloads, SLAs, and cost targets.</p></div>
+        <div class="step"><div class="n">2</div><strong>Build</strong><p>Codify infra, pipelines, and policies.</p></div>
+        <div class="step"><div class="n">3</div><strong>Ship</strong><p>Blue/green or canary releases via ALB + ECS/EKS.</p></div>
+        <div class="step"><div class="n">4</div><strong>Operate</strong><p>Measure SLOs, scale, and iterate safely.</p></div>
+      </div>
+    </section>
+
+    <section id="demo" class="section">
+      <h3>Try a live check</h3>
+      <div class="cards">
+        <article class="card">
+          <h4>Health probe</h4>
+          <p>Point your ALB DNS name below and test a path‑based route.</p>
+          <form id="probe" style="margin-top:10px">
+            <input id="dns" type="text" placeholder="my-app-lb-123.us-east-1.elb.amazonaws.com" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--stroke);background:rgba(255,255,255,.04);color:var(--text)">
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <button type="button" data-path="/api/health" class="primary" style="cursor:pointer">Check /api</button>
+              <button type="button" data-path="/web/health" class="ghost" style="cursor:pointer">Check /web</button>
+            </div>
+            <pre id="out" style="margin-top:12px;background:rgba(0,0,0,.35);border:1px solid var(--stroke);padding:12px;border-radius:12px;min-height:60px;white-space:pre-wrap"></pre>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <span>© <span id="year"></span> CloudOps Studio</span>
+      <span>Built for AWS & DevOps showcases • ALB • ECS • IaC • CI/CD</span>
+    </footer>
+  </div>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // simple fetch probe (CORS must be allowed by your targets)
+    const form = document.getElementById('probe');
+    const out = document.getElementById('out');
+    form.addEventListener('click', async (e)=>{
+      if(e.target.tagName === 'BUTTON'){
+        const dns = document.getElementById('dns').value.trim();
+        const path = e.target.getAttribute('data-path');
+        if(!dns){ out.textContent = 'Enter your ALB DNS name first.'; return; }
+        const url = `https://${dns}${path}`;
+        out.textContent = 'Requesting ' + url + ' ...';
+        try{
+          const res = await fetch(url, { method:'GET' });
+          const text = await res.text();
+          out.textContent = `Status: ${res.status}\n\n` + text.slice(0, 2000);
+        }catch(err){
+          out.textContent = 'Fetch failed. If CORS blocks the browser request, try cURL from your terminal:\n\n' + `curl -i '${url}'`;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

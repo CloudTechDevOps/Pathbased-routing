@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Multi-Cloud ALB Path Routing Test</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #0073e6;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      flex: 1 1 280px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .aws { border-top: 5px solid #ff9900; }
+    .azure { border-top: 5px solid #0078d4; }
+    .gcp { border-top: 5px solid #ea4335; }
+
+    .card a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #0073e6;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .card a:hover {
+      background: #005bb5;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background: #eaeaea;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Multicloud Devops by veera nareshit </h1>
+    <p>Click a platform below to verify ALB routing</p>
+  </header>
+
+  <div class="container">
+    <div class="card aws">
+      <h2>Amazon Web Services (AWS)</h2>
+      <p>Test routing to the AWS backend using ALB.</p>
+      <a href="http://multicloud-lb-1376115289.us-east-1.elb.amazonaws.com/aws/">Go to AWS</a>
+    </div>
+
+    <div class="card azure">
+      <h2>Microsoft Azure</h2>
+      <p>Test routing to the Azure backend using ALB.</p>
+      <a href="http://multicloud-lb-1376115289.us-east-1.elb.amazonaws.com/azure/">Go to Azure</a>
+    </div>
+
+    <div class="card gcp">
+      <h2>Google Cloud Platform (GCP)</h2>
+      <p>Test routing to the GCP backend using ALB.</p>
+      <a href="http://multicloud-lb-1376115289.us-east-1.elb.amazonaws.com/gcp/">Go to GCP</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Multi-Cloud Demo | ALB Routing Lab | Powered by AWS ALB
+  </footer>
+
+</body>
+</html>

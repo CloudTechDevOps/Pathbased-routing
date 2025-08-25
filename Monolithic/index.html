@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Multi-Cloud Landing Page — AWS, Azure & GCP</title>
+  <style>
+    :root {
+      /* Shared */
+      --bg: #0a0d14;
+      --text: #f1f5f9;
+      --muted: #a0aec0;
+      --radius: 20px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #0a0d14, #111827);
+      color: var(--text);
+      padding: 20px;
+    }
+    h1, h2, h3, h4 {
+      margin: 0 0 10px 0;
+    }
+    p {
+      margin: 0 0 16px 0;
+      color: var(--muted);
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .wrapper {
+      max-width: 1200px;
+      margin: auto;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #333;
+    }
+    .nav h1 {
+      font-weight: 700;
+    }
+    .section {
+      margin: 40px 0;
+      padding: 20px;
+      border-radius: var(--radius);
+      background: rgba(255 255 255 / 0.05);
+      box-shadow: 0 8px 24px rgba(0 0 0 / 0.6);
+    }
+    /* AWS Section */
+    .aws {
+      --brand-color: #FF9900;
+      --brand-bg: rgba(255, 153, 0, 0.15);
+    }
+    .aws .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .aws .logo {
+      width: 40px;
+      height: 40px;
+      background: var(--brand-color);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: 700;
+      font-family: monospace;
+      font-size: 18px;
+      user-select: none;
+    }
+    .aws h2 {
+      color: var(--brand-color);
+    }
+    .aws .badge {
+      background: var(--brand-color);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #111;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* Azure Section */
+    .azure {
+      --brand-color: #0078D4;
+      --brand-bg: rgba(0, 120, 212, 0.15);
+    }
+    .azure .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .azure .logo {
+      width: 40px;
+      height: 40px;
+      background: var(--brand-color);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: 700;
+      font-family: monospace;
+      font-size: 18px;
+      user-select: none;
+    }
+    .azure h2 {
+      color: var(--brand-color);
+    }
+    .azure .badge {
+      background: var(--brand-color);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #111;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* GCP Section */
+    .gcp {
+      --brand-color: #4285F4;
+      --brand-bg: rgba(66, 133, 244, 0.15);
+    }
+    .gcp .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .gcp .logo {
+      width: 40px;
+      height: 40px;
+      background: var(--brand-color);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: 700;
+      font-family: monospace;
+      font-size: 18px;
+      user-select: none;
+    }
+    .gcp h2 {
+      color: var(--brand-color);
+    }
+    .gcp .badge {
+      background: var(--brand-color);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #111;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* Cards for services */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      flex: 1 1 300px;
+      box-shadow: 0 4px 14px rgba(0 0 0 / 0.5);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 28px rgba(0 0 0 / 0.7);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .cards {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <nav class="nav">
+      <h1>Multi-Cloud Landing Page</h1>
+      <div>
+        <!-- Could add links here if needed -->
+      </div>
+    </nav>
+
+    <!-- AWS Section -->
+    <section class="section aws" id="aws">
+      <div class="header">
+        <div class="logo">AWS</div>
+        <h2>AWS Cloud & DevOps</h2>
+      </div>
+      <p><strong>Accelerate delivery with AWS and powerful DevOps practices.</strong></p>
+      <div class="cards">
+        <article class="card">
+          <div class="badge">IaC</div>
+          <div class="badge">CloudFormation</div>
+          <h4>Infrastructure as Code</h4>
+          <p>Automate provisioning using CloudFormation and AWS CDK with version control.</p>
+        </article>
+        <article class="card">
+          <div class="badge">CI/CD</div>
+          <div class="badge">CodePipeline</div>
+          <h4>Continuous Delivery</h4>
+          <p>Build and deploy pipelines with AWS CodePipeline, CodeBuild, and CodeDeploy.</p>
+        </article>
+        <article class="card">
+          <div class="badge">Monitoring</div>
+          <div class="badge">CloudWatch</div>
+          <h4>Observability & Reliability</h4>
+          <p>Set SLIs and SLOs, monitor logs and metrics using CloudWatch and CloudTrail.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Azure Section -->
+    <section class="section azure" id="azure">
+      <div class="header">
+        <div class="logo">AZ</div>
+        <h2>Microsoft Azure & DevOps</h2>
+      </div>
+      <p><strong>Modern cloud-native delivery leveraging Azure's DevOps tools.</strong></p>
+      <div class="cards">
+        <article class="card">
+          <div class="badge">IaC</div>
+          <div class="badge">ARM Templates</div>
+          <h4>Infrastructure as Code</h4>
+          <p>Deploy resources declaratively using ARM templates or Bicep language.</p>
+        </article>
+        <article class="card">
+          <div class="badge">CI/CD</div>
+          <div class="badge">Azure Pipelines</div>
+          <h4>Continuous Delivery</h4>
+          <p>Automate builds and deployments with Azure Pipelines and GitHub Actions.</p>
+        </article>
+        <article class="card">
+          <div class="badge">Monitoring</div>
+          <div class="badge">Azure Monitor</div>
+          <h4>Observability & Reliability</h4>
+          <p>Use Azure Monitor and Log Analytics to track application and infrastructure health.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- GCP Section -->
+    <section class="section gcp" id="gcp">
+      <div class="header">
+        <div class="logo">GCP</div>
+        <h2>Google Cloud Platform & DevOps</h2>
+      </div>
+      <p><strong>Accelerate delivery with GCP and powerful DevOps.</strong></p>
+      <div class="cards">
+        <article class="card">
+          <div class="badge">IaC</div>
+          <div class="badge">Terraform</div>
+          <h4>Infrastructure as Code</h4>
+          <p>Provision GCP reliably: VPCs, GKE, Cloud SQL, Load Balancers — fully automated and version-controlled.</p>
+        </article>
+        <article class="card">
+          <div class="badge">CI/CD</div>
+          <div class="badge">Cloud Build</div>
+          <h4>Continuous Delivery</h4>
+          <p>Automate builds and deployments with Cloud Build, Spinnaker, or GitHub Actions — zero-downtime rollouts.</p>
+        </article>
+        <article class="card">
+          <div class="badge">SRE</div>
+          <div class="badge">Monitoring</div>
+          <h4>Reliability & Observability</h4>
+          <p>SLIs, SLOs, and alerts with Cloud Monitoring, Logging, and Operations Suite.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Multi-Cloud DevOps Landing Page — AWS, Azure & GCP Showcase
+    </footer>
+  </div>
+</body>
+</html>
